@@ -176,10 +176,10 @@
         }
 
         .event-content {
-            flex: 0 0 250px;  /* Increase the width of the content */
-            padding-left: 2rem;
-            max-width: 80%;  /* Ensure the content doesn't stretch too much */
-            margin: 0 auto;  /* Center the content */
+            flex: 1;  /* Allow the content to take up the remaining space */
+            padding-left: 2rem;  /* Add padding to the left */
+            padding-right: 2rem;  /* Add padding to the right for spacing */
+            max-width: calc(100% - 150px);  /* Ensure it takes the full remaining space minus the time slot width */
         }
 
         .event-title {
