@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会议日程 - CyberWorlds 2025</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏样式 */
+        .main-header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            padding: 1rem 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        /* 会议日程样式 */
+        .program-content {
+            margin-top: 100px;
+            padding: 2rem 0;
+        }
+
+        .program-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .program-header h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .program-header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .program-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .tab-button {
+            padding: 1rem 2rem;
+            border: none;
+            background: none;
+            font-size: 1.1em;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tab-button:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #007bff;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .tab-button.active {
+            color: #007bff;
+        }
+
+        .tab-button.active:after {
+            transform: scaleX(1);
+        }
+
+        .program-day {
+            display: none;
+        }
+
+        .program-day.active {
+            display: block;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .schedule-table th {
+            background-color: #f8f9fa;
+        }
+
+        .paper-session {
+            margin-top: 2rem;
+        }
+
+        .paper-session h2 {
+            font-size: 1.5em;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .paper-session ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .paper-session li {
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-session a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .paper-session a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="logo1.png" alt="CW Logo">
+                    <span class="logo-text">CyberWorlds 2025</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="flyer.html">Flyer</a></li>
+                    <li><a href="program.html">Conference Program</a></li>
+                    <li><a href="awards.html">Awards</a></li>
+                    <li><a href="speakers.html">Keynote Speakers</a></li>
+                    <li><a href="committee.html">Committee</a></li>
+                    <li><a href="venue.html">For Attendees</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="program-content">
+        <div class="container">
+            <div class="program-header">
+                <h1>会议日程</h1>
+                <p>2025年10月29-31日</p>
+            </div>
+
+            <div class="program-tabs">
+                <button class="tab-button active" data-day="1">第一天 (10/29)</button>
+                <button class="tab-button" data-day="2">第二天 (10/30)</button>
+                <button class="tab-button" data-day="3">第三天 (10/31)</button>
+            </div>
+
+            <div class="program-day active" id="day1">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>会场1 (Event Space)</th>
+                            <th>会场2 (Room 101)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>09:00 - 10:00</td>
+                            <td>注册</td>
+                            <td>注册</td>
+                        </tr>
+                        <tr>
+                            <td>10:00 - 10:30</td>
+                            <td>开幕式</td>
+                            <td>开幕式</td>
+                        </tr>
+                        <tr>
+                            <td>10:30 - 11:10</td>
+                            <td>主题演讲1</td>
+                            <td>主题演讲1</td>
+                        </tr>
+                        <tr>
+                            <td>11:10 - 12:00</td>
+                            <td>午餐（提供）</td>
+                            <td>午餐（提供）</td>
+                        </tr>
+                        <tr>
+                            <td>12:00 - 13:00</td>
+                            <td>主题演讲2</td>
+                            <td>主题演讲2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="program-day" id="day2">
+                <h2>第二天: 10月30日</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>会场1 (Event Space)</th>
+                            <th>会场2 (Room 101)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>09:20 - 11:00</td>
+                            <td>
+                                VIC 1<br>
+                                <ul>
+                                    <li>Visualization for Serve Form of Volleyball to Support the Improvement of Serve Technique - Nao Torii and Takayuki Itoh</li>
+                                    <li>One-to-many Line Matching across keyframes using the minimum weight edge cover problem - Ayumu Sato, Ryo Moriai and Suguru Saito</li>
+                                    <li>Avatar Deformity and Task Loads Required to Induce a Sense of Body Ownership - Fumito Okabe and Mie Sato</li>
+                                    <li>Effects of Adding Contact Sound to Avatars on Their Presence - Tatsuya Tominaga, Kosei Tomioka, Fumito Okabe and Mie Sato</li>
+                                    <li>Procedural Generative Design for Spatial Layout Planning Using Hexagonal Cellular Automata - Chelsea Shan Xian Ng, Chun-Hsien Chen and Peer Mohideen Sathikh</li>
+                                </ul>
+                            </td>
+                            <td>
+                                CWAI 1<br>
+                                <ul>
+                                    <li>Analysis of Acute Stress Reaction with EEG using MI-mRMR EEG channel selection and Ensemble Learning with Majority Voting - Muhammad Rasydan Mazlan, Abdul Syafiq Abdull Sukor, Abdul Hamid Adom, Latifah Munirah Kamarudin, Hiromitsu Nishizaki and Norasmadi Abdul Rahim</li>
+                                    <li>Wearable Ear EEG Device for E
