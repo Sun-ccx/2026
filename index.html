@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberWorlds 2025 - 国际虚拟世界会议</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏样式 */
+        .main-header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            padding: 1rem 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        /* 轮播图样式 */
+        .hero-slider {
+            margin-top: 73px;
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .slide-content p {
+            font-size: 1.2em;
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 1em;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .slider-button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .slider-button.prev {
+            left: 20px;
+        }
+
+        .slider-button.next {
+            right: 20px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: white;
+        }
+
+        /* 主要内容区域样式 */
+        main {
+            padding: 2rem 0;
+        }
+
+        .highlights {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .highlight-icon {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        .highlight-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .highlight-list li {
+            margin-bottom: 0.5em;
+        }
+
+        .highlight-link {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .highlight-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 最新更新部分的样式 */
+        .latest-updates {
+            padding: 2rem 0;
+            background: #fff;
+        }
+
+        .latest-updates h2 {
+            font-size: 1.5em;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .updates-list {
+            background: #f8f9fa;
+            padding: 1rem;
+        }
+
+        .update-item {
+            display: flex;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .update-item:last-child {
+            border-bottom: none;
+        }
+
+        .update-date {
+            flex: 0 0 100px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .update-content {
+            flex: 1;
+            color: #333;
+        }
+
+        .update-content > div {
+            margin-bottom: 0.2em;
+        }
+
+        .update-content a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .update-content a:hover {
+            text-decoration: underline;
+        }
+
+        .see-more, .view-accommodations {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-top: 0.3em;
+        }
+
+        .see-more:hover, .view-accommodations:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .update-item {
+                flex-direction: column;
+            }
+
+            .update-date {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-slider {
+                height: 400px;
+                margin-top: 60px;
+            }
+
+            .slide-content h2 {
+                font-size: 2em;
+            }
+
+            .slide-content p {
+                font-size: 1em;
+            }
+        }
+
+        /* 主办单位样式 */
+        .sponsors {
+            padding: 4rem 0;
+            background: #fff;
+        }
+
+        .sponsors h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .sponsor-item {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .sponsor-item img {
+            max-width: 200px;
+            height: auto;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+
+        .sponsor-item img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* 快速链接样式 */
+        .quick-links {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .quick-links h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .quick-link-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .quick-link-card h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .quick-link-card a {
+            color: #007bff;
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+        }
+
+        .quick-link-card a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .sponsor-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .sponsor-item img {
+                max-width: 150px;
+            }
+
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="logo1.png" alt="CW Logo">
+                    <span class="logo-text">CyberWorlds 2025</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="flyer.html">Flyer</a></li>
+                    <li><a href="program.html">Conference Program</a></li>
+                    <li><a href="awards.html">Awards</a></li>
+                    <li><a href="speakers.html">Keynote Speakers</a></li>
+                    <li><a href="committee.html">Committee</a></li>
+                    <li><a href="venue.html">For Attendees</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero-slider">
+        <div class="slider-container">
+            <div class="slide active">
+                <img src="shanxi1.jpg" alt="Conference Venue">
+                <div class="slide-content">
+                    <h2> Welcome to CyberWorlds 2025</h2>
+                    <p>Exploring the frontier technologies of the virtual world</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="shanxi2.jpg" alt="Previous Conference">
+                <div class="slide-content">
+                    <h2>Gathering top scholars from around the world</h2>
+                    <p>Share the latest research findings</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="shanxi3.jpg" alt="Technology Exhibition">
+                <div class="slide-content">
+                    <h2>Breakthrough Technology Showcase</h2>
+                    <p>Experience Future Technology</p>
+                </div>
+            </div>
+             <div class="slide">
+                <img src="shanxi4.jpg" alt="Technology Exhibition">
+                </div>
+            </div>
+        </div>
+        <button class="slider-button prev">&lt;</button>
+        <button class="slider-button next">&gt;</button>
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+
+  <!-- 插入的文字内容 -->
+<section class="cyberworlds-intro">
+    <div class="container">
+        <p>Cyberworlds are information spaces and communities that immensely augment the way we interact, participate in business and receive information throughout the world. Cyberworlds seriously impact our lives and the evolution of the world economy by taking such forms as social networking services, 3D shared virtual communities and massively multiplayer online role-playing games.</p>
+    </div>
+</section>
+
+    <main>
+        <section class="latest-updates">
+            <div class="container">
+                <h2>LATEST UPDATES</h2>
+                <div class="updates-list">
+                    <div class="update-item">
+                        <div class="update-date">2024-11-07</div>
+                        <div class="update-content">
+                            <div>Award List available <a href="awards.html">here</a></div>
+                        </div>
+                    </div>
+
+                    <div class="update-item">
+                        <div class="update-date">2024-10-17</div>
+                        <div class="update-content">
+                            <div>Conference Program Updates:</div>
+                            <div>- Session chair updates</div>
+                            <div>- Timetable updates</div>
+                            <a href="program.html" class="see-more">See More</a>
+                        </div>
+                    </div>
+
+                    <div class="update-item">
+                        <div class="update-date">2024-10-11</div>
+                        <div class="update-content">
+                            <div>Conference Program Updates:</div>
+                            <div>- Oral Paper Presentation updates</div>
+                            <a href="program.html" class="see-more">See More</a>
+                        </div>
+                    </div>
+
+                    <div class="update-item">
+                        <div class="update-date">2024-10-03</div>
+                        <div class="update-content">
+                            <div>Conference Program Updates:</div>
+                            <div>- Keynote Speaker schedule</div>
+                            <a href="program.html" class="see-more">See More</a>
+                        </div>
+                    </div>
+
+                    <div class="update-item">
+                        <div class="update-date">2024-10-01</div>
+                        <div class="update-content">
+                            <div>Social Events Updates:</div>
+                            <div>- About our Social Events venue <a href="venue.html" class="see-more">See More</a></div>
+                        </div>
+                    </div>
+
+                    <div class="update-item">
+                        <div class="update-date">2024-09-25</div>
+                        <div class="update-content">
+                            <div>Conference Program Updates:</div>
+                            <div>- Excursion destination notice</div>
+                            <div>- Session time of VIC3 and CHMI1 updates</div>
+                            <a href="program.html" class="see-more">See More</a>
+                        </div>
+                    </div>
+
+                    <div class="update-item">
+                        <div class="update-date">2024-09-24</div>
+                        <div class="update-content">
+                            <div>Keynote Speaker Updates</div>
+                            <a href="speakers.html" class="see-more">See More</a>
+                        </div>
+                    </div>
+
+                    <div class="update-item">
+                        <div class="update-date">2024-09-22</div>
+                        <div class="update-content">
+                            <div>New Accommodation Recommendation Available</div>
+                            <a href="venue.html" class="view-accommodations">View Accommodations</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="sponsors">
+            <div class="container">
+                <h2>Organizing Committee</h2>
+                <div class="sponsor-grid">
+                    <div class="sponsor-item">
+                        <img src="logo1.png" alt="Organizing Committee1">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="logo2.png" alt="Organizing Committee2">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="logo.png" alt="Organizing Committee3">
+                    </div>
+                </div>
+            </div>
+        </section>
+      
+        <section class="quick-links">
+            <div class="container">
+                <div class="quick-links-grid">
+                    <div class="quick-link-card">
+                        <h3>Organizing Committee</h3>
+                        <ul>
+                            <li><a href="committee.html">Organizing Committee</a></li>
+                            <li><a href="https://cyberworlds2024.yamanashi-u.jp/ " target="_blank">Previous Conferences</a></li>
+                        </ul>
+                    </div>
+                    <div class="quick-link-card">
+                        <h3>Conference Guide</h3>
+                        <ul>
+                            <li><a href="venue.html">Conference Venue</a></li>
+                            <li><a href="venue.html"> Accommodation Information</a></li>
+                        </ul>
+                    </div>
+                    <div class="quick-link-card">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li>Email：contact@cyberworlds2025.org</li>
+                            <li>Phone：+81-XX-XXXX-XXXX</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 CyberWorlds Conference. All rights reserved.</p>
+            <p>Contact Information: cyberworlds2025@example.com</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevButton = document.querySelector('.slider-button.prev');
+            const nextButton = document.querySelector('.slider-button.next');
+            let currentSlide = 0;
+            const slideCount = slides.length;
+
+            // 自动轮播间隔（毫秒）
+            const autoSlideInterval = 5000;
+            let autoSlideTimer;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                showSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                showSlide(currentSlide);
+            }
+
+            prevButton.addEventListener('click', () => {
+                prevSlide();
+                resetAutoSlide();
+            });
+
+            nextButton.addEventListener('click', () => {
+                nextSlide();
+                resetAutoSlide();
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                    resetAutoSlide();
+                });
+            });
+
+            function startAutoSlide() {
+                autoSlideTimer = setInterval(nextSlide, autoSlideInterval);
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideTimer);
+                startAutoSlide();
+            }
+
+            const slider = document.querySelector('.hero-slider');
+            slider.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideTimer);
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                startAutoSlide();
+            });
+
+            startAutoSlide();
+        });
+    </script>
+</body>
+</html>
+  
