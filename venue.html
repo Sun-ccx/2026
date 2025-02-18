@@ -239,24 +239,36 @@
             </div>
 
             <div class="section">
-                <div class="section-header">
-                    <h2>Local Attractions</h2>
-                </div>
-                <div class="info-box">
-                    <div class="info-item">
-                        <img src="jinci.jpg" alt="jinci">
-                        <p>Jinci Temple<br>A royal sacrificial garden in Taiyuan,Shanxi,with a long history and exquisite architecture.</p>
-                    </div>
-                    <div class="info-item">
-                        <img src="wts.jpg" alt="wutaishan">
-                        <p>Wutai Mountain<br>A Buddhist holy land in Xinzhou,Shanxi,one of China's Four Sacred Mountains,known for its temples and scenic beauty.</p>
-                    </div>
-                    <div class="info-item">
-                        <img src="qjdy.jpg" alt="Winery">
-                        <p>Qiao Family Compound<br>A cluster of ancient buildings from the Ming and Qing dynasties in Qixian,Shanxi,showcasing the essence of Jin merchant culture.</p>
-                    </div>
-                </div>
+    <div class="section-header">
+        <h2>Local Attractions</h2>
+    </div>
+    <div class="info-box">
+        <div class="info-item">
+            <div class="carousel">
+                <img src="jinci1.jpg" alt="Jinci Temple" class="active">
+                <img src="jinci2.jpg" alt="Jinci Temple">
+                <img src="jinci3.jpg" alt="Jinci Temple">
             </div>
+            <p>Jinci Temple<br>A royal sacrificial garden in Taiyuan, Shanxi, with a long history and exquisite architecture.</p>
+        </div>
+        <div class="info-item">
+            <div class="carousel">
+                <img src="wts1.jpg" alt="Wutai Mountain" class="active">
+                <img src="wts2.jpg" alt="Wutai Mountain">
+                <img src="wts3.jpg" alt="Wutai Mountain">
+            </div>
+            <p>Wutai Mountain<br>A Buddhist holy land in Xinzhou, Shanxi, one of China's Four Sacred Mountains, known for its temples and scenic beauty.</p>
+        </div>
+        <div class="info-item">
+            <div class="carousel">
+                <img src="qjdy1.jpg" alt="Qiao Family Compound" class="active">
+                <img src="qjdy2.jpg" alt="Qiao Family Compound">
+                <img src="qjdy3.jpg" alt="Qiao Family Compound">
+            </div>
+            <p>Qiao Family Compound<br>A cluster of ancient buildings from the Ming and Qing dynasties in Qixian, Shanxi, showcasing the essence of Jin merchant culture.</p>
+        </div>
+    </div>
+</div>
 
             <div class="section">
                 <div class="section-header">
@@ -285,16 +297,21 @@
     </main>
 <script>
         // 轮播图逻辑
-        const carouselImages = document.querySelectorAll('.carousel img');
-        let currentIndex = 0;
+       // 获取所有轮播图
+const carousels = document.querySelectorAll('.carousel');
 
-        function showNextImage() {
-            carouselImages[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % carouselImages.length;
-            carouselImages[currentIndex].classList.add('active');
-        }
+carousels.forEach(carousel => {
+    const images = carousel.querySelectorAll('img');
+    let currentIndex = 0;
 
-        setInterval(showNextImage, 2500); // 2.5秒切换一次
+    function showNextImage() {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+    }
+
+    setInterval(showNextImage, 2400); // 2.4秒切换一次
+});
     </script>
 </body>
 </html>
