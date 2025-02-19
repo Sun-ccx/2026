@@ -151,6 +151,65 @@
             display: block;
         }
 
+        /* 黑神话悟空板块样式 */
+        .wukong-section {
+            background: linear-gradient(to right, #1a1a1a, #333);
+            color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .wukong-section h2 {
+            font-size: 2em;
+            margin-bottom: 1rem;
+            color: #ffcc00;
+        }
+
+        .wukong-section p {
+            font-size: 1.1em;
+            margin-bottom: 1.5rem;
+            color: #ddd;
+        }
+
+        .wukong-section .keywords {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .wukong-section .keywords span {
+            padding: 0.5rem 1rem;
+            background-color: #444;
+            border-radius: 20px;
+            color: #ffcc00;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .wukong-section .keywords span:hover {
+            background-color: #555;
+        }
+
+        .wukong-section .explore-btn {
+            padding: 0.8rem 2rem;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 25px;
+            color: #1a1a1a;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .wukong-section .explore-btn:hover {
+            background-color: #e6b800;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -162,6 +221,11 @@
 
             .info-item {
                 margin-bottom: 1rem;
+            }
+
+            .wukong-section .keywords {
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
     </style>
@@ -187,7 +251,7 @@
         </nav>
     </header>
     <main>
-        <div class="content">
+          <div class="content">
             <div class="section">
                 <div class="section-header">
                     <h2>Taiyuan University of Technology</h2>
@@ -198,14 +262,72 @@
                             <img src="tyut1.jpg" alt="Taiyuan University of Technology" class="active">
                             <img src="tyut2.jpg" alt="Taiyuan University of Technology">
                             <img src="tyut3.jpg" alt="Taiyuan University of Technology">
+                            <img src="tyut4.jpg" alt="Taiyuan University of Technology">
+                            <img src="tyut5.jpg" alt="Taiyuan University of Technology">
+                            <img src="tyut6.jpg" alt="Taiyuan University of Technology">
+                            <img src="tyut7.jpg" alt="Taiyuan University of Technology">
+                            <img src="tyut8.jpg" alt="Taiyuan University of Technology">
+                            <img src="tyut9.jpg" alt="Taiyuan University of Technology">
+                            <img src="tyut10.jpg" alt="Taiyuan University of Technology">
+                            <img src="tyut11.jpg" alt="Taiyuan University of Technology">
+                            <img src="tyut12.jpg" alt="Taiyuan University of Technology">
                         </div>
                     </div>
                     <div class="info-item">
                         <p>Address: No.209, University Street, Yuci District, Jinzhong City</p>
-                        <p>Taiyuan University of Technology is a century-old institution with a long history, profound heritage, and distinctive characteristics. It is located in Taiyuan, a national historical and cultural city with a history of over 2,500 years. Adhering to the motto “Seeking Truth and Innovation,” Taiyuan University of Technology is committed to cultivating well-rounded socialist builders and successors who excel in moral, intellectual, physical, aesthetic, and labor education. The university has made significant contributions to national economic construction and social development.</p>
+                        <p>Taiyuan University of Technology is a century-old institution with a long history,profound heritage,and distinctive characteristics.It is located in Taiyuan,a national historical and cultural city with a history of over 2,500 years.</p>
+                        <p>The university focuses primarily on engineering while integrating science and engineering with the coordinated development of multiple disciplines.It covers nine categories,including science,engineering,economics,law,education,literature,management,art,and interdisciplinary studies,and has 24 professional colleges.</p>
+                        <p>Taiyuan University of Technology places great emphasis on the construction of sports culture and is the only university in China that has won national championships in both men's basketball and football.</p>
+                        <p>Throughout its long history,Taiyuan University of Technology has always adhered to the motto of"Seeking Truth and Innovation"and is committed to cultivating well-rounded socialist builders and successors who develop morally,intellectually,physically,aesthetically,and laboriously.</p>
                     </div>
                 </div>
             </div>
+
+
+        
+        <div class="content">
+            <!-- 黑神话悟空板块 -->
+            <div class="wukong-section">
+                <h2>黑神话悟空与山西</h2>
+                <p>黑神话悟空的创作灵感源自山西深厚的文化底蕴，游戏场景与山西古建筑、神话传说交相辉映，带你领略东方奇幻之美。</p>
+                <div class="keywords">
+                    <span>山西古建</span>
+                    <span>神话传说</span>
+                    <span>游戏取景地</span>
+                    <span>文化传承</span>
+                </div>
+                <button class="explore-btn">探索更多</button>
+            </div>
+
+            <!-- 其他板块 -->
+                <div class="section">
+                <div class="section-header">
+                    <h2>Local Attractions</h2>
+                </div>
+                <div class="info-box">
+        <div class="info-item">
+            <div class="carousel">
+                <img src="jinci1.jpg" alt="Jinci Temple" class="active">
+                <img src="jinci2.jpg" alt="Jinci Temple">
+                <img src="jinci3.jpg" alt="Jinci Temple">
+            </div>
+                        <p>Jinci Temple<br>A royal sacrificial garden in Taiyuan,Shanxi,with a long history and exquisite architecture.</p>
+                    </div>
+                     <div class="info-item">
+            <div class="carousel">
+                <img src="wutaishan1.jpg" alt="Wutai Mountain" class="active">
+                <img src="wutaishan2.jpg" alt="Wutai Mountain">
+                <img src="wutaishan3.jpg" alt="Wutai Mountain">
+            </div>
+                <p>Wutai Mountain<br>A Buddhist holy land in Xinzhou,Shanxi,one of China's Four Sacred Mountains,known for its temples and scenic beauty.</p>
+                    </div>
+                    <div class="info-item">
+                        <img src="qjdy.jpg" alt="Winery">
+                        <p>Qiao Family Compound<br>A cluster of ancient buildings from the Ming and Qing dynasties in Qixian,Shanxi,showcasing the essence of Jin merchant culture.</p>
+                    </div>
+                </div>
+            </div>
+
              <div class="section">
                 <div class="section-header">
                     <h2>Transportation Guide</h2>
@@ -239,38 +361,6 @@
             </div>
 
             <div class="section">
-    <div class="section-header">
-        <h2>Local Attractions</h2>
-    </div>
-    <div class="info-box">
-        <div class="info-item">
-            <div class="carousel">
-                <img src="jinci1.jpg" alt="Jinci Temple" class="active">
-                <img src="jinci2.jpg" alt="Jinci Temple">
-                <img src="jinci3.jpg" alt="Jinci Temple">
-            </div>
-            <p>Jinci Temple<br>A royal sacrificial garden in Taiyuan, Shanxi, with a long history and exquisite architecture.</p>
-        </div>
-        <div class="info-item">
-            <div class="carousel">
-                <img src="wts1.jpg" alt="Wutai Mountain" class="active">
-                <img src="wts2.jpg" alt="Wutai Mountain">
-                <img src="wts3.jpg" alt="Wutai Mountain">
-            </div>
-            <p>Wutai Mountain<br>A Buddhist holy land in Xinzhou, Shanxi, one of China's Four Sacred Mountains, known for its temples and scenic beauty.</p>
-        </div>
-        <div class="info-item">
-            <div class="carousel">
-                <img src="qjdy1.jpg" alt="Qiao Family Compound" class="active">
-                <img src="qjdy2.jpg" alt="Qiao Family Compound">
-                <img src="qjdy3.jpg" alt="Qiao Family Compound">
-            </div>
-            <p>Qiao Family Compound<br>A cluster of ancient buildings from the Ming and Qing dynasties in Qixian, Shanxi, showcasing the essence of Jin merchant culture.</p>
-        </div>
-    </div>
-</div>
-
-            <div class="section">
                 <div class="section-header">
                     <h2>Practical Information</h2>
                 </div>
@@ -290,28 +380,26 @@
                     <div class="info-item">
                         <h3>Emergency Contacts</h3>
                         <p>Police: 110<br>Ambulance: 119</p>
-                    </div>
-                </div>
-            </div>
+
+            <!-- 其他板块内容省略 -->
         </div>
     </main>
-<script>
+    <script>
         // 轮播图逻辑
-       // 获取所有轮播图
-const carousels = document.querySelectorAll('.carousel');
+        const carousels = document.querySelectorAll('.carousel');
 
-carousels.forEach(carousel => {
-    const images = carousel.querySelectorAll('img');
-    let currentIndex = 0;
+        carousels.forEach(carousel => {
+            const images = carousel.querySelectorAll('img');
+            let currentIndex = 0;
 
-    function showNextImage() {
-        images[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % images.length;
-        images[currentIndex].classList.add('active');
-    }
+            function showNextImage() {
+                images[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.add('active');
+            }
 
-    setInterval(showNextImage, 2400); // 2.4秒切换一次
-});
+            setInterval(showNextImage, 2400); // 2.4秒切换一次
+        });
     </script>
 </body>
 </html>
