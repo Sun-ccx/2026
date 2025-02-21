@@ -34,10 +34,13 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            padding: 1rem 0;
         }
 
         .navbar {
+            padding: 1rem 0;
+        }
+
+        .navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -77,24 +80,9 @@
             color: #007bff;
         }
 
-        /* 汉堡菜单样式 */
-        .toggle-menu {
-            display: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .toggle-menu div {
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-            margin: 5px 0;
-            transition: all 0.3s;
-        }
-
         /* 内容样式 */
         .content {
-            margin-top: 70px; /* 确保内容不会被导航栏覆盖 */
+            margin-top: 100px;
             padding: 2rem 0;
         }
 
@@ -222,14 +210,11 @@
             background-color: #e6b800;
         }
 
-        /* 移动端样式 */
+     /* 仅修改移动端导航栏显示方式 */
         @media (max-width: 768px) {
-            .toggle-menu {
-                display: block;
-            }
-
+            /* 移除display:none并调整布局 */
             .nav-links {
-                display: none;
+                display: flex;
                 flex-direction: column;
                 gap: 0.5rem;
                 background: rgba(255,255,255,0.95);
@@ -241,23 +226,18 @@
                 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             }
 
-            .nav-links.active {
-                display: flex;
-            }
-
             .nav-links li {
                 text-align: center;
                 padding: 0.5rem 0;
             }
 
+            /* 保持原有其他移动端样式 */
             .info-box {
                 flex-direction: column;
             }
-
             .info-item {
                 margin-bottom: 1rem;
             }
-
             .wukong-section .keywords {
                 flex-direction: column;
                 gap: 0.5rem;
