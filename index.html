@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 International Conference on Cyberworlds</title>
+    <title>CyberWorlds 2025 - Venue Information</title>
     <style>
         /* 基础样式 */
         * {
@@ -15,6 +15,8 @@
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
         }
 
         .container {
@@ -32,13 +34,10 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-        }
-
-        .navbar {
             padding: 1rem 0;
         }
 
-        .navbar .container {
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -78,231 +77,151 @@
             color: #007bff;
         }
 
-        /* 轮播图样式 */
-        .hero-slider {
-            margin-top: 73px;
-            position: relative;
-            width: 100%;
-            height: 600px;
-            overflow: hidden;
-        }
-
-        .slider-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .slide.active {
-            opacity: 1;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .slide-content {
-            position: absolute;
-            bottom: 20%;
-            left: 10%;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .slide-content h2 {
-            font-size: 2.5em;
-            margin-bottom: 0.5em;
-        }
-
-        .slide-content p {
-            font-size: 1.2em;
-        }
-
-        .slider-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 1em;
+        /* 汉堡菜单样式 */
+        .toggle-menu {
+            display: none;
             cursor: pointer;
-            font-size: 1.2em;
-            transition: background 0.3s;
-            z-index: 10;
+            padding: 0.5rem;
         }
 
-        .slider-button:hover {
-            background: rgba(0, 0, 0, 0.8);
+        .toggle-menu div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: all 0.3s;
         }
 
-        .slider-button.prev {
-            left: 20px;
-        }
-
-        .slider-button.next {
-            right: 20px;
-        }
-
-        .slider-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .dot.active {
-            background: white;
-        }
-
-        /* 主要内容区域样式 */
-        main {
+        /* 内容样式 */
+        .content {
+            margin-top: 70px; /* 确保内容不会被导航栏覆盖 */
             padding: 2rem 0;
         }
 
-        .highlights {
-            padding: 4rem 0;
-            background: #f8f9fa;
+        .section {
+            margin-bottom: 3rem;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        .highlight-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        .section-header {
+            text-align: center;
+            margin-bottom: 1rem;
         }
 
-        .highlight-card {
-            background: white;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .highlight-icon {
-            font-size: 2em;
-            margin-bottom: 0.5em;
-        }
-
-        .highlight-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .highlight-list li {
-            margin-bottom: 0.5em;
-        }
-
-        .highlight-link {
-            text-decoration: none;
-            color: #007bff;
-        }
-
-        .highlight-link:hover {
-            text-decoration: underline;
-        }
-
-        /* 最新更新部分的样式 */
-        .latest-updates {
-            padding: 2rem 0;
-            background: #fff;
-        }
-
-        .latest-updates h2 {
+        .section-header h2 {
             font-size: 1.5em;
-            margin-bottom: 1.5rem;
             color: #333;
         }
 
-        .updates-list {
-            background: #f8f9fa;
-            padding: 1rem;
-        }
-
-        .update-item {
+        .info-box {
             display: flex;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
+            justify-content: space-between;
+            margin-bottom: 1rem;
         }
 
-        .update-item:last-child {
-            border-bottom: none;
-        }
-
-        .update-date {
-            flex: 0 0 100px;
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .update-content {
+        .info-item {
             flex: 1;
-            color: #333;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
         }
 
-        .update-content > div {
-            margin-bottom: 0.2em;
+        .info-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
         }
 
-        .update-content a {
-            color: #007bff;
-            text-decoration: none;
+        .info-item p {
+            margin-top: 0.5rem;
+            color: #666;
         }
 
-        .update-content a:hover {
-            text-decoration: underline;
+        /* 轮播图样式 */
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 5px;
         }
 
-        .see-more, .view-accommodations {
-            color: #007bff;
-            text-decoration: none;
-            font-size: 0.9em;
-            display: inline-block;
-            margin-top: 0.3em;
+        .carousel img {
+            width: 100%;
+            height: auto;
+            display: none;
+            border-radius: 5px;
         }
 
-        .see-more:hover, .view-accommodations:hover {
-            text-decoration: underline;
+        .carousel img.active {
+            display: block;
         }
 
-        @media (max-width: 768px) {
-            .update-item {
-                flex-direction: column;
-            }
-
-            .update-date {
-                margin-bottom: 0.5rem;
-            }
+        /* 黑神话悟空板块样式 */
+        .wukong-section {
+            background: linear-gradient(to right, #1a1a1a, #333);
+            color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
         }
 
-        /* 响应式设计 */
-      
+        .wukong-section h2 {
+            font-size: 2em;
+            margin-bottom: 1rem;
+            color: #ffcc00;
+        }
+
+        .wukong-section p {
+            font-size: 1.1em;
+            margin-bottom: 1.5rem;
+            color: #ddd;
+        }
+
+        .wukong-section .keywords {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .wukong-section .keywords span {
+            padding: 0.5rem 1rem;
+            background-color: #444;
+            border-radius: 20px;
+            color: #ffcc00;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .wukong-section .keywords span:hover {
+            background-color: #555;
+        }
+
+        .wukong-section .explore-btn {
+            padding: 0.8rem 2rem;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 25px;
+            color: #1a1a1a;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .wukong-section .explore-btn:hover {
+            background-color: #e6b800;
+        }
+
         /* 移动端样式 */
         @media (max-width: 768px) {
             .toggle-menu {
@@ -343,139 +262,6 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
-        }
-        /* 主办单位样式 */
-        .sponsors {
-            padding: 4rem 0;
-            background: #fff;
-        }
-
-        .sponsors h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-
-        .sponsor-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            align-items: center;
-            justify-items: center;
-        }
-
-        .sponsor-item {
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .sponsor-item img {
-            max-width: 200px;
-            height: auto;
-            filter: grayscale(100%);
-            transition: filter 0.3s;
-        }
-
-        .sponsor-item img:hover {
-            filter: grayscale(0%);
-        }
-
-        /* 快速链接样式 */
-        .quick-links {
-            padding: 4rem 0;
-            background: #f8f9fa;
-        }
-
-        .quick-links h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .quick-links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .quick-link-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .quick-link-card h3 {
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .quick-link-card a {
-            color: #007bff;
-            text-decoration: none;
-            display: block;
-            margin: 0.5rem 0;
-        }
-
-        .quick-link-card a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .sponsor-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-
-            .sponsor-item img {
-                max-width: 150px;
-            }
-
-            .quick-links-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* 新增样式 */
-        .acl-2025-dates {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #f0f4f8;
-            border-radius: 8px;
-        }
-
-        .acl-2025-dates h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        .acl-2025-dates ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .acl-2025-dates li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .acl-2025-dates li:last-child {
-            border-bottom: none;
-        }
-
-        .acl-2025-dates table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .acl-2025-dates th, .acl-2025-dates td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .acl-2025-dates th {
-            background-color: #f0f4f8;
         }
 
     </style>
