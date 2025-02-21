@@ -303,11 +303,14 @@
 
         /* 响应式设计 */
       
-        /* 仅修改移动端导航栏显示方式 */
+        /* 移动端样式 */
         @media (max-width: 768px) {
-            /* 移除display:none并调整布局 */
+            .toggle-menu {
+                display: block;
+            }
+
             .nav-links {
-                display: flex;
+                display: none;
                 flex-direction: column;
                 gap: 0.5rem;
                 background: rgba(255,255,255,0.95);
@@ -319,18 +322,23 @@
                 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             }
 
+            .nav-links.active {
+                display: flex;
+            }
+
             .nav-links li {
                 text-align: center;
                 padding: 0.5rem 0;
             }
 
-            /* 保持原有其他移动端样式 */
             .info-box {
                 flex-direction: column;
             }
+
             .info-item {
                 margin-bottom: 1rem;
             }
+
             .wukong-section .keywords {
                 flex-direction: column;
                 gap: 0.5rem;
