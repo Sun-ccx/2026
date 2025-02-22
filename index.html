@@ -211,39 +211,36 @@
         }
 
      /* 仅修改移动端导航栏显示方式 */
-        @media (max-width: 768px) {
-            /* 移除display:none并调整布局 */
-            .nav-links {
-                display: flex;
-                flex-direction: column;
-                gap: 0.5rem;
-                background: rgba(255,255,255,0.95);
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                padding: 1rem 20px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            }
+@media (max-width: 768px) {
+    .main-header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
 
-            .nav-links li {
-                text-align: center;
-                padding: 0.5rem 0;
-            }
+    .navbar {
+        padding: 0.5rem 0; /* 减少导航栏的内边距 */
+    }
 
-            /* 保持原有其他移动端样式 */
-            .info-box {
-                flex-direction: column;
-            }
-            .info-item {
-                margin-bottom: 1rem;
-            }
-            .wukong-section .keywords {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-        }
+    .hero-slider {
+        margin-top: 60px; /* 调整轮播图的顶部间距，确保不被导航栏遮挡 */
+    }
 
+    .nav-links {
+        display: none; /* 隐藏导航链接 */
+    }
+
+    .logo img {
+        height: 30px; /* 缩小Logo的大小 */
+    }
+
+    .logo-text {
+        font-size: 1.2em; /* 缩小Logo文字的大小 */
+    }
+}
     </style>
 </head>
 <body>
