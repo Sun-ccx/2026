@@ -128,9 +128,18 @@
 
 .subtrack-title {
     color: #007bff; /* 蓝色 */
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    padding-left: 40px; /* 缩进一个 Tab（40px） */
+}
+
+.subtrack-content {
+    padding-left: 80px; /* 缩进两个 Tab（80px） */
+}
+
+.subtrack-content p {
+    margin-bottom: 5px; /* 调整段落间距 */
 }
 
         /* 汉堡菜单样式 */
@@ -271,21 +280,24 @@
 
             <!-- 新增的跟踪项 -->
         <div class="committee-member">
-            
-            <h3 class="subtrack-title">    Visual and Interaction Computing :</h3>
-            <p>        Visual Computing	</p>
-            <p>        Data Science for Immersive Communication</p>
-            <p>        Applications of Cyberworlds	</p>
-            <p>        Multimodal Interaction and Human Factors	</p>
-            <p>        Computer Graphics and 3D Vision</p>
-            <p>        Applications of Virtual and Augmented Reality in Cyberspace</p>
-            <p>        Art and Heritage in Cyberspace</p>
-            <p>        Multi-user Games in Cyberspace</p>
-            <p>        Virtual City Modelling, Processing and Simulation</p>
-            <p>        Virtual Collaborative Spaces</p>
+        <h3 class="subtrack-title">Visual and Interaction Computing:</h3>
+        <div class="subtrack-content">
+            <p>Visual Computing</p>
+            <p>Data Science for Immersive Communication</p>
+            <p>Applications of Cyberworlds</p>
+            <p>Multimodal Interaction and Human Factors</p>
+            <p>Computer Graphics and 3D Vision</p>
+            <p>Applications of Virtual and Augmented Reality in Cyberspace</p>
+            <p>Art and Heritage in Cyberspace</p>
+            <p>Multi-user Games in Cyberspace</p>
+            <p>Virtual City Modelling, Processing and Simulation</p>
+            <p>Virtual Collaborative Spaces</p>
+    </div>
+
         
 
             <h3 class="subtrack-title">    Cognitive Human-Machine Interaction:</h3>
+            <div class="subtrack-content">
             <p>        Mobile and Wearable Interaction Technologies</p>
             <p>        Neurotechnology and Brain-computer Interfaces (BCIs) Applications</p>
             <p>        Cognitive Informatics</p>
@@ -295,9 +307,11 @@
             <p>        Human-Robot Interaction</p>
             <p>        Virtual and Augmented Reality and Human Factors</p>
             <p>        Machine-assisted Cognitive Enhancement</p>
+          </div>>
             
 
             <h3 class="subtrack-title">    Cyberworlds Meets AIGC and LLM:</h3>
+            <div class="subtrack-content">
             <p>        Digital Twins and Virtual Ecosystems</p>
             <p>        Artificial Intelligence Generated Content（AIGC）in Gaming, Entertainment, and Education</p>
             <p>        Large Language Models (LLMs) in Cyberworlds</p>
@@ -306,6 +320,7 @@
             <p>        Ethics, Privacy, and Security in AI-Driven Cyberworlds</p>
             <p>        Machine and Deep Learning Algorithms for Cyberworlds </p>
             <p>        Future Trends and Challenges</p>
+             </div>
         </div>
 
 
