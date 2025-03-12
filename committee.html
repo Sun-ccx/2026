@@ -89,14 +89,14 @@
 
 .committee-general-chair .committee-member-photo {
     margin: 10px; /* 添加间距 */
-    text-align: center; /* 文字居中 */
+    text-align: center;
+    width: 120px/* 文字居中 */
 }
 
 .committee-general-chair .committee-member-photo img {
-    width: 80px;
-    height: 80px;
-    border-radius: 0;
-    object-fit: cover;
+   width: 100%; /* 图片宽度占满容器 */
+    height: auto; /* 保持图片的原始比例 */
+    object-fit: contain; /* 确保图片完整显示，不裁剪 */
     margin-bottom: 10px; /* 图片和名字的间距 */
 }
 
