@@ -79,6 +79,30 @@
         }
 
         /* 委员会样式 */
+        .committee-general-chair {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    flex-wrap: wrap; /* 允许换行 */
+    margin-top: 20px;
+}
+
+.committee-general-chair .committee-member-photo {
+    margin: 10px; /* 添加间距 */
+    text-align: center; /* 文字居中 */
+}
+
+.committee-general-chair .committee-member-photo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px; /* 图片和名字的间距 */
+}
+
+
+
+        
         .committee-section {
             margin-top: 100px;
             padding: 2rem 0;
@@ -257,7 +281,20 @@
                 <h1>Committee</h1> <!-- 这是需要变大的标题 -->
             </div>
             <p class="committee-role">GENERAL CHAIR</p>
-            <p class="committee-member">Mingqiang Wei, Yanwen Guo, Yvhua Qian</p>
+<div class="committee-general-chair">
+    <div class="committee-member-photo">
+        <img src="tyut1.jpg" alt="Mingqiang Wei">
+        <p>Mingqiang Wei</p>
+    </div>
+    <div class="committee-member-photo">
+        <img src="tyut2.jpg" alt="Yanwen Guo">
+        <p>Yanwen Guo</p>
+    </div>
+    <div class="committee-member-photo">
+        <img src="tyut3.jpg" alt="Yvhua Qian">
+        <p>Yvhua Qian</p>
+    </div>
+</div>
 
             <p class="committee-role">PC CHAIR</p>
             <p class="committee-member">Zehua Chen, Lei Zhu</p>
