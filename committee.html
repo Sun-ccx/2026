@@ -79,18 +79,29 @@
         }
 
         /* 委员会样式 */
-       .committee-general-chair {
+    .committee-general-chair-container {
+    text-align: center; /* 使标题和照片容器居中 */
+    margin-top: 20px; /* 调整顶部间距 */
+}
+
+.committee-role {
+    font-size: 1.5em; /* 增大标题字体大小 */
+    font-weight: bold; /* 加粗 */
+    margin-bottom: 20px; /* 增加标题与照片之间的间距 */
+}
+
+.committee-general-chair {
     display: flex;
     justify-content: space-between; /* 三张照片均匀分布 */
     align-items: center; /* 垂直居中 */
     width: 70%; /* 容器宽度占页面宽度的70% */
-    margin: 20px auto; /* 上下外边距为20px，左右自动居中 */
+    margin: 0 auto; /* 上下外边距为0，左右自动居中 */
     padding: 0; /* 清除内边距 */
 }
 
 .committee-member-photo {
     text-align: center; /* 文字居中 */
-    width: 30%; /* 每张照片占容器宽度的30%，留出一些空间用于间隔 */
+    width: 30%; /* 每张照片占容器宽度的30% */
 }
 
 .committee-member-photo img {
@@ -104,7 +115,6 @@
     font-size: 1.2em; /* 增大名字的字体大小 */
     color: #333; /* 字体颜色 */
 }
-
 
 
         
@@ -285,19 +295,24 @@
             <div class="committee-header">
                 <h1>Committee</h1> <!-- 这是需要变大的标题 -->
             </div>
-           <p class="committee-role">GENERAL CHAIR</p>
-<div class="committee-general-chair">
-    <div class="committee-member-photo">
-        <img src="speaker1.jpg" alt="Mingqiang Wei">
-        <p>Mingqiang Wei</p>
-    </div>
-    <div class="committee-member-photo">
-        <img src="speaker2.jpg" alt="Yanwen Guo">
-        <p>Yanwen Guo</p>
-    </div>
-    <div class="committee-member-photo">
-        <img src="speaker3.jpg" alt="Yvhua Qian">
-        <p>Yvhua Qian</p>
+
+
+            
+           <div class="committee-general-chair-container">
+    <p class="committee-role">GENERAL CHAIR</p>
+    <div class="committee-general-chair">
+        <div class="committee-member-photo">
+            <img src="mingqiang_wei.jpg" alt="Mingqiang Wei">
+            <p>Mingqiang Wei</p>
+        </div>
+        <div class="committee-member-photo">
+            <img src="yanwen_guo.jpg" alt="Yanwen Guo">
+            <p>Yanwen Guo</p>
+        </div>
+        <div class="committee-member-photo">
+            <img src="yvhua_qian.jpg" alt="Yvhua Qian">
+            <p>Yvhua Qian</p>
+        </div>
     </div>
 </div>
 
