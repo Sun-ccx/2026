@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-    <meta charset="UTF-8">
+   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberWorlds 2025 - Venue Information</title>
+    <title>2025 International Conference on Cyberworlds</title>
     <style>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        
         /* 基础样式 */
         * {
             margin: 0;
@@ -15,8 +19,6 @@
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
         }
 
         .container {
@@ -80,175 +82,581 @@
             color: #007bff;
         }
 
-        /* 内容样式 */
-        .content {
-            margin-top: 100px;
-            padding: 2rem 0;
-        }
-
-        .section {
-            margin-bottom: 3rem;
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .section-header h2 {
-            font-size: 1.5em;
-            color: #333;
-        }
-
-        .info-box {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-
-        .info-item {
-            flex: 1;
-            padding: 1rem;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .info-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .info-item p {
-            margin-top: 0.5rem;
-            color: #666;
-        }
-
         /* 轮播图样式 */
-        .carousel {
+        .hero-slider {
+            margin-top: 73px;
             position: relative;
             width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
+            height: 600px;
             overflow: hidden;
-            border-radius: 5px;
         }
 
-        .carousel img {
+        .slider-container {
+            position: relative;
             width: 100%;
-            height: auto;
-            display: none;
-            border-radius: 5px;
+            height: 100%;
         }
 
-        .carousel img.active {
-            display: block;
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
 
-        /* 黑神话悟空板块样式 */
-        .wukong-section {
-            background: linear-gradient(to right, #1a1a1a, #333);
-            color: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            text-align: center;
+        .slide.active {
+            opacity: 1;
         }
 
-        .wukong-section h2 {
-            font-size: 2em;
-            margin-bottom: 1rem;
-            color: #ffcc00;
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center; /* 确保图片居中显示 */
         }
 
-        .wukong-section p {
-            font-size: 1.1em;
-            margin-bottom: 1.5rem;
-            color: #ddd;
+        .slide-content {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .wukong-section .keywords {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+        .slide-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
         }
 
-        .wukong-section .keywords span {
-            padding: 0.5rem 1rem;
-            background-color: #444;
-            border-radius: 20px;
-            color: #ffcc00;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .slide-content p {
+            font-size: 1.2em;
         }
 
-        .wukong-section .keywords span:hover {
-            background-color: #555;
-        }
-
-        .wukong-section .explore-btn {
-            padding: 0.8rem 2rem;
-            background-color: #ffcc00;
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
             border: none;
-            border-radius: 25px;
-            color: #1a1a1a;
-            font-size: 1em;
-            font-weight: 600;
+            padding: 1em;
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-size: 1.2em;
+            transition: background 0.3s;
+            z-index: 10;
         }
 
-        .wukong-section .explore-btn:hover {
-            background-color: #e6b800;
+        .slider-button:hover {
+            background: rgba(0, 0, 0, 0.8);
         }
 
-        body {
-            background-color: #000;
+        .slider-button.prev {
+            left: 20px;
+        }
+
+        .slider-button.next {
+            right: 20px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            margin: 0;
+            gap: 10px;
+            z-index: 10;
         }
-        .carousel {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            perspective: 1000px;
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
         }
-        .carousel-inner {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            transform-style: preserve-3d;
-            animation: rotate 10s infinite linear;
+
+        .dot.active {
+            background: white;
         }
-        .carousel-item {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        @keyframes rotate {
-            from { transform: rotateY(0deg); }
-            to { transform: rotateY(360deg); }
-        }
+
+
+
+/* 3D 旋转轮播图样式 */
+.carousel {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 50px auto;
+    perspective: 1000px;
+}
+
+.carousel-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out;
+}
+
+.carousel-item {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* 按钮样式 */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 1em;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.slider-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.slider-button.prev {
+    left: -50px;
+}
+
+.slider-button.next {
+    right: -50px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .carousel {
+        width: 200px;
+        height: 150px;
+    }
+    .carousel-item {
+        transform: scale(0.8);
+    }
+    .slider-button {
+        font-size: 1em;
+        padding: 0.8em;
+    }
+}
+
+
+       
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .important-dates table {
+        font-size: 0.9em;
+    }
+
+    .important-dates th,
+    .important-dates td {
+        padding: 0.6rem;
+    }
+}
+
+
 
 
         
-     /* 汉堡菜单样式 */
+        /* 主要内容区域样式 */
+        main {
+            padding: 2rem 0;
+        }
+
+        .highlights {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .highlight-icon {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        .highlight-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .highlight-list li {
+            margin-bottom: 0.5em;
+        }
+
+        .highlight-link {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .highlight-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 最新更新部分的样式 */
+        .latest-updates {
+            padding: 2rem 0;
+            background: #fff;
+        }
+
+        .latest-updates h2 {
+            font-size: 1.5em;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .updates-list {
+            background: #f8f9fa;
+            padding: 1rem;
+        }
+
+        .update-item {
+            display: flex;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .update-item:last-child {
+            border-bottom: none;
+        }
+
+        .update-date {
+            flex: 0 0 100px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .update-content {
+            flex: 1;
+            color: #333;
+        }
+
+        .update-content > div {
+            margin-bottom: 0.2em;
+        }
+
+        .update-content a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .update-content a:hover {
+            text-decoration: underline;
+        }
+
+        .see-more, .view-accommodations {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-top: 0.3em;
+        }
+
+        .see-more:hover, .view-accommodations:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .update-item {
+                flex-direction: column;
+            }
+
+            .update-date {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-slider {
+                height: 400px;
+                margin-top: 60px;
+            }
+
+            .slide-content h2 {
+                font-size: 2em;
+            }
+
+            .slide-content p {
+                font-size: 1em;
+            }
+        }
+
+        /* 主办单位样式 */
+        .sponsors {
+            padding: 4rem 0;
+            background: #fff;
+        }
+
+        .sponsors h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .sponsor-item {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .sponsor-item img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .sponsor-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .sponsor-item img {
+                max-width: 150px;
+            }
+        }
+
+        /* 快速链接样式 */
+        .quick-links {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .quick-links h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .quick-link-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .quick-link-card h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .quick-link-card a {
+            color: #007bff;
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+        }
+
+        .quick-link-card a:hover {
+            text-decoration: underline;
+        }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.8;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+/* 全息投影标题效果 */
+.holographic-title {
+    position: relative;
+    display: inline-block;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: transparent;
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5, #00d2ff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+    animation: holographic-shine 3s linear infinite;
+}
+
+@keyframes holographic-shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* 会议信息卡片样式 */
+.conference-info {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2.5rem;
+    margin: 3rem 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 专题轨道样式 */
+.track {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 4px solid #007bff;
+}
+
+.track:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.track h3 {
+    color: #007bff;
+    font-size: 1.5em;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.track h3::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #007bff;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.track ul {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.track li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+}
+
+.track li::before {
+    content: "•";
+    color: #007bff;
+    font-size: 1.5em;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+/* 关于晋中样式 */
+.about-jinzhong {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23f0f0f0" stroke-width="1"/></svg>');
+    padding: 2.5rem;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-jinzhong::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+}
+
+.about-jinzhong h2 {
+    color: #2c3e50;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.about-jinzhong h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+}
+
+.about-jinzhong p {
+    color: #555;
+    line-height: 1.9;
+    text-align: justify;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .holographic-title {
+        font-size: 2em;
+    }
+    
+    .conference-info {
+        padding: 1.5rem;
+    }
+    
+    .track {
+        padding: 1.5rem;
+    }
+}
+
+
+
+
+        
+      /* 汉堡菜单样式 */
 .hamburger {
     display: none; /* 默认隐藏 */
     cursor: pointer;
@@ -329,6 +737,129 @@
         margin-top: 60px; /* 调整轮播图的顶部间距 */
     }
 }
+
+        /* 新增样式 */
+        .acl-2025-dates {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f0f4f8;
+            border-radius: 8px;
+        }
+
+        .acl-2025-dates h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .acl-2025-dates ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .acl-2025-dates li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .acl-2025-dates li:last-child {
+            border-bottom: none;
+        }
+
+        .acl-2025-dates table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .acl-2025-dates th, .acl-2025-dates td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .acl-2025-dates th {
+            background-color: #f0f4f8;
+        }
+
+       /* 3D 立方体重要日期样式 */
+        .important-dates {
+            margin: 4rem 0;
+            padding: 2rem 0;
+            perspective: 1000px;
+            height: 500px;
+        }
+
+        .important-dates h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 2rem;
+            font-size: 1.8em;
+        }
+
+        .cube-container {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+       .cube {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+            position: relative;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+            box-sizing: border-box;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+       .face-front  { transform: translateZ(200px); background: linear-gradient(135deg, #4CAF50, #8BC34A); }
+        .face-back   { transform: rotateY(180deg) translateZ(200px); background: linear-gradient(135deg, #2196F3, #03A9F4); }
+        .face-right  { transform: rotateY(90deg) translateZ(200px); background: linear-gradient(135deg, #FF9800, #FFC107); }
+        .face-left   { transform: rotateY(-90deg) translateZ(200px); background: linear-gradient(135deg, #9C27B0, #E91E63); }
+        .face-top    { transform: rotateX(90deg) translateZ(200px); background: linear-gradient(135deg, #607D8B, #455A64); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(200px); background: linear-gradient(135deg, #795548, #5D4037); }
+       
+         .date-item {
+            margin-bottom: 10px;
+        }
+
+        .date-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .date-date {
+            font-style: italic;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .cube-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .cube-face {
+                font-size: 1em;
+                padding: 15px;
+            }
+        }
+       
+
+       
     </style>
 </head>
 <body>
@@ -336,7 +867,7 @@
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="logo1.png" alt="CW Logo">
+                <img src="logo11.png" alt="CW Logo">
             </a>
             <!-- 汉堡菜单按钮 -->
             <button class="hamburger" aria-label="Toggle navigation">
@@ -347,14 +878,11 @@
             <!-- 导航链接 -->
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="flyer.html">Flyer</a></li>
-                <li><a href="program.html">Conference Program</a></li>
-                <li><a href="Papers.html">Call for papers</a></li>
-                <li><a href="awards.html">Awards</a></li>
-                <li><a href="speakers.html">Keynote Speakers</a></li>
-                <li><a href="committee.html">Committee</a></li>
-                <li><a href="venue.html">For Attendees</a></li>
-                <li><a href="wu.html">For At/a></li>
+                  <li><a href="flyer.html">Flyer</a></li>
+                    <li><a href="Papers.html">Call for papers</a></li>
+                    <li><a href="speakers.html">Keynote Speakers</a></li>
+                    <li><a href="committee.html">Committee</a></li>
+                    <li><a href="venue.html">For Attendees</a></li>
             </ul>
         </div>
     </nav>
@@ -363,25 +891,40 @@
     <div class="hero-slider">
         <div class="slider-container">
             <div class="slide active">
-                <img src="shanxi1.jpg" alt="Conference Venue">
+                <img src="bo5.jpg" alt="Conference Venue">
                 <div class="slide-content">
                     <h2> Welcome to 2025 International Conference on Cyberworlds</h2>
                     <p>Exploring the frontier technologies of the virtual world</p>
                 </div>
             </div>
             <div class="slide">
-                <img src="shanxi2.jpg" alt="Previous Conference">
+                <img src="bo1.jpg" alt="Previous Conference">
                 <div class="slide-content">
                     <h2>Gathering top scholars from around the world</h2>
                     <p>Share the latest research findings</p>
                 </div>
             </div>
             <div class="slide">
-                <img src="shanxi3.jpg" alt="Technology Exhibition">
+                <img src="bo2.jpg" alt="Technology Exhibition">
                 <div class="slide-content">
                     <h2>Breakthrough Technology Showcase</h2>
                     <p>Experience Future Technology</p>
                 </div>
+            </div>
+            <div class="slide">
+                <img src="bo3.jpg" alt="Technology Exhibition">
+            </div>
+            <div class="slide">
+                <img src="bo4.jpg" alt="Technology Exhibition">
+            </div>
+            <div class="slide">
+                <img src="shanxi1.jpg" alt="Technology Exhibition">
+            </div>
+            <div class="slide">
+                <img src="shanxi2.jpg" alt="Technology Exhibition">
+            </div>
+            <div class="slide">
+                <img src="shanxi3.jpg" alt="Technology Exhibition">
             </div>
         </div>
         <button class="slider-button prev">&lt;</button>
@@ -390,173 +933,416 @@
             <span class="dot active"></span>
             <span class="dot"></span>
             <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
     </div>
+<!-- 3D 轮播图 -->
+<div class="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item" style="background-image: url('bo5.jpg'); transform: rotateY(0deg) translateZ(300px);"></div>
+        <div class="carousel-item" style="background-image: url('bo1.jpg'); transform: rotateY(45deg) translateZ(300px);"></div>
+        <div class="carousel-item" style="background-image: url('bo2.jpg'); transform: rotateY(90deg) translateZ(300px);"></div>
+        <div class="carousel-item" style="background-image: url('bo3.jpg'); transform: rotateY(135deg) translateZ(300px);"></div>
+        <div class="carousel-item" style="background-image: url('bo4.jpg'); transform: rotateY(180deg) translateZ(300px);"></div>
+        <div class="carousel-item" style="background-image: url('shanxi1.jpg'); transform: rotateY(225deg) translateZ(300px);"></div>
+        <div class="carousel-item" style="background-image: url('shanxi2.jpg'); transform: rotateY(270deg) translateZ(300px);"></div>
+        <div class="carousel-item" style="background-image: url('shanxi3.jpg'); transform: rotateY(315deg) translateZ(300px);"></div>
+    </div>
+    <button class="slider-button prev" onclick="rotateCarousel(-1)">&#10094;</button>
+    <button class="slider-button next" onclick="rotateCarousel(1)">&#10095;</button>
+</div>
 
-
-
-
-
-    
-    <!-- 插入的文字内容 -->
-    <section class="cyberworlds-intro">
-        <div class="container">
-            <p>Cyberworlds are information spaces and communities that immensely augment the way we interact, participate in business and receive information throughout the world. Cyberworlds seriously impact our lives and the evolution of the world economy by taking such forms as social networking services, 3D shared virtual communities and massively multiplayer online role-playing games.</p>
+<!-- 插入的文字内容 -->
+<!-- 替换原有的文字部分 -->
+<section class="cyberworlds-intro">
+    <div class="container">
+        <p class="lead-text">Cyberworlds are information spaces and communities that immensely augment the way we interact, participate in business and receive information throughout the world. Cyberworlds seriously impact our lives and the evolution of the world economy by taking such forms as social networking services, 3D shared virtual communities and massively multiplayer online role-playing games.</p>
+        
+        <div class="conference-info">
+            <h1 class="holographic-title">Welcome to the 24th International Conference on Cyberworlds (CW 2025)</h1>
+            <p class="conference-description">The 24th International Conference on Cyberworlds will be held from October 14 to 16, 2025, at Taiyuan University of Technology in Jinzhong, Shanxi Province, China. Organized by Taiyuan University of Technology, this conference aims to bring together researchers and practitioners from academia, government, and industry worldwide to discuss the latest advancements in the theory, methods, and applications of cyberspace.</p>
+            
+            <h2 class="section-title">Conference Tracks</h2>
+            <p class="section-intro">CW 2025 will feature the following tracks, focusing on emerging areas in cyberworlds:</p>
+            
+            <div class="track">
+                <h3><i class="fas fa-vr-cardboard"></i> Visual and Interactive Computing in Cyberspace Track</h3>
+                <p>This track will explore advancements in virtual and augmented reality applications, computer vision, and interactive systems within cyberspace. Discussion topics include but are not limited to:</p>
+                <ul>
+                    <li>Innovative applications of virtual and augmented reality technologies</li>
+                    <li>Presentation of art and cultural heritage in cyberspace</li>
+                    <li>Image processing and computer vision techniques for enhanced visual experiences</li>
+                </ul>
+            </div>
+            
+            <div class="track">
+                <h3><i class="fas fa-brain"></i> Cognitive Human-Machine Interaction Track</h3>
+                <p>Focusing on the intersection of cognitive science and human-machine interaction, this track aims to discuss how technology can enhance the interaction between humans and machines. Key topics include:</p>
+                <ul>
+                    <li>Brain-computer interface (BCI) technologies and their applications</li>
+                    <li>Adaptive systems and personalized user experience design</li>
+                    <li>Machine learning and deep learning methods to enhance human cognitive abilities</li>
+                </ul>
+            </div>
+            
+            <div class="track">
+                <h3><i class="fas fa-robot"></i> Cyberworlds Meet AIGC and LLM Track</h3>
+                <p>This newly introduced track will delve into the integration and application of Artificial Intelligence Generated Content (AIGC) and Large Language Models (LLM) within cyberworlds. Discussion topics include:</p>
+                <ul>
+                    <li>Creation, management, and application of AI-generated content</li>
+                    <li>Roles and impacts of large language models in virtual environments</li>
+                    <li>Ethical and societal implications of AIGC and LLM applications</li>
+                </ul>
+            </div>
+            
+            <div class="about-jinzhong">
+                <h2>About Jinzhong</h2>
+                <p>Jinzhong is located in the central-eastern part of Shanxi Province, bordered by the Taihang Mountains to the east and the Fen River to the west, adjacent to the provincial capital, Taiyuan, to the north. The city covers an area of approximately 16,391 square kilometers and has a permanent population of about 3.37 million. Jinzhong boasts a rich historical and cultural heritage, featuring renowned sites such as Pingyao Ancient City, Yuci Old Town, and Zhangbi Ancient Fortress in Jiexiu. Additionally, the city's well-developed public transportation network allows attendees to easily navigate and explore various attractions and savor local delicacies.</p>
+                <p>We are committed to planning an extraordinary academic event for you, celebrating together the illustrious</p>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="acl-2025-dates">
-        <h2>ACL 2025 Important Dates</h2>
-        <ul>
-            <li><strong>Jan 26, 2025</strong> - Call for System Demonstrations is out</li>
-            <li><strong>Jan 20, 2025</strong> - Second call for papers is out</li>
-            <li><strong>Dec 3, 2024</strong> - Call for Industry Track is out</li>
-            <li><strong>Oct 7, 2024</strong> - First call for papers is out</li>
-            <li><strong>Sep 12, 2024</strong> - The ACL-NAACL-EMNLP joint call for tutorials is out</li>
-        </ul>
-
-        <table>
-            <tr>
-                <th>Date</th>
-                <th>Event</th>
-            </tr>
-            <tr>
-                <td>February 15, 2025</td>
-                <td>Submission deadline (all papers are submitted to ARR)</td>
-            </tr>
-            <tr>
-                <td>April 15, 2025</td>
-                <td>ARR reviews & meta-reviews available to authors of the February cycle</td>
-            </tr>
-            <tr>
-                <td>April 20, 2025</td>
-                <td>Commitment deadline for ACL 2025</td>
-            </tr>
-            <tr>
-                <td>May 15, 2025</td>
-                <td>Notification of acceptance</td>
-            </tr>
-            <tr>
-                <td>May 30, 2025</td>
-                <td>Withdrawal deadline</td>
-            </tr>
-            <tr>
-                <td>May 30, 2025</td>
-                <td>Camera-ready papers due</td>
-            </tr>
-            <tr>
-                <td>July 27 to August 1st, 2025</td>
-                <td>Overall Conference</td>
-            </tr>
-            <tr>
-                <td>July 27, 2025</td>
-                <td>Tutorials & Welcome Reception</td>
-            </tr>
-            <tr>
-                <td>July 28 - 30, 2025</td>
-                <td>Main Conference Dates</td>
-            </tr>
-            <tr>
-                <td>July 31 - August 1, 2025</td>
-                <td>Workshops</td>
-            </tr>
-        </table>
-    </section>
-
-    <section class="sponsors">
+<!-- 重要日期立方体 -->
+    <section class="important-dates">
         <div class="container">
-            <h2>Organizing Committee</h2>
-            <div class="sponsor-grid">
-                <div class="sponsor-item">
-                    <img src="logo11.png" alt="Organizing Committee1">
-                </div>
-                <div class="sponsor-item">
-                    <img src="logo2.png" alt="Organizing Committee2">
-                </div>
-                <div class="sponsor-item">
-                    <img src="logo.png" alt="Organizing Committee3">
+            <h2>Important Dates</h2>
+            <div class="cube-container">
+                <div class="cube" id="cube">
+                    <div class="cube-face face-front">
+                        <div class="date-item">
+                            <div class="date-title">Papers (Full/Short) Submission</div>
+                            <div class="date-date">June 13, Friday</div>
+                        </div>
+                        <div class="date-item">
+                            <div class="date-title">Papers (Full/Short) Notification</div>
+                            <div class="date-date">July 21, Monday</div>
+                        </div>
+                    </div>
+                    <div class="cube-face face-back">
+                        <div class="date-item">
+                            <div class="date-title">Poster papers submission</div>
+                            <div class="date-date">Aug 1, Friday</div>
+                        </div>
+                        <div class="date-item">
+                            <div class="date-title">Poster papers notification</div>
+                            <div class="date-date">Aug 18, Monday</div>
+                        </div>
+                    </div>
+                    <div class="cube-face face-right">
+                        <div class="date-item">
+                            <div class="date-title">Camera-ready submission</div>
+                            <div class="date-date">Sep 5, Friday</div>
+                        </div>
+                    </div>
+                    <div class="cube-face face-left">
+                        <div class="date-item">
+                            <div class="date-title">Author registration</div>
+                            <div class="date-date">Sep 5, Friday</div>
+                        </div>
+                    </div>
+                    <div class="cube-face face-top">
+                        <div class="date-item">
+                            <div class="date-title">Conference Dates</div>
+                            <div class="date-date">October 14-16, 2025</div>
+                        </div>
+                    </div>
+                    <div class="cube-face face-bottom">
+                        <div class="date-item">
+                            <div class="date-title">Early Bird Registration</div>
+                            <div class="date-date">Aug 31, Sunday</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+
+
+    
+    <!-- 待插入 -->
+    
+   <section class="sponsors">
+    <div class="container">
+        <h2>Supported by</h2>
+        <div class="sponsor-grid">
+            <div class="sponsor-item">
+                <img src="logo11.png" alt="Organizing Committee1">
+            </div>
+            <div class="sponsor-item">
+                <img src="logo22.png" alt="Organizing Committee2">
+            </div>
+          <!--  <div class="sponsor-item"> -->
+                 <!--  <img src="EG.png" alt="Organizing Committee3"> -->
+             <!--  </div> -->
+        </div>
+    </div>
+</section>
+
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 CyberWorlds Conference. All rights reserved.</p>
-            <p>Contact Information: cyberworlds2025@example.com</p>
+            <p>&copy; 2025 Cyberworlds Conference. All rights reserved.</p>
+        
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot');
-            const prevButton = document.querySelector('.slider-button.prev');
-            const nextButton = document.querySelector('.slider-button.next');
-            let currentSlide = 0;
-            const slideCount = slides.length;
+<script>
+    // 在现有的JavaScript中添加
+document.addEventListener('DOMContentLoaded', function() {
+    // 标题动画
+    const titles = document.querySelectorAll('h1, h2, h3');
+    titles.forEach(title => {
+        title.style.opacity = '0';
+        title.style.transform = 'translateY(20px)';
+        title.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    // 段落动画
+    const paragraphs = document.querySelectorAll('.conference-info p, .track p');
+    paragraphs.forEach((p, index) => {
+        p.style.opacity = '0';
+        p.style.transform = 'translateY(20px)';
+        p.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+    });
+    
+    // 列表项动画
+    const listItems = document.querySelectorAll('.track li');
+    listItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(-20px)';
+        item.style.transition = `opacity 0.4s ease ${index * 0.1}s, transform 0.4s ease ${index * 0.1}s`;
+    });
+    
+    // 触发动画
+    setTimeout(() => {
+        titles.forEach(title => {
+            title.style.opacity = '1';
+            title.style.transform = 'translateY(0)';
+        });
+        
+        paragraphs.forEach(p => {
+            p.style.opacity = '1';
+            p.style.transform = 'translateY(0)';
+        });
+        
+        listItems.forEach(item => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
+        });
+    }, 300);
+    
+    // 滚动动画
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    document.querySelectorAll('.track, .about-jinzhong').forEach(section => {
+        observer.observe(section);
+    });
+});
 
-            // 自动轮播间隔（毫秒）
-            const autoSlideInterval = 5000;
-            let autoSlideTimer;
 
-            function showSlide(index) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                slides[index].classList.add('active');
-                dots[index].classList.add('active');
+    
+   document.addEventListener('DOMContentLoaded', function() {
+            const cube = document.getElementById('cube');
+            let isDragging = false;
+            let startX, startY;
+            let startRotateX = 0;
+            let startRotateY = 0;
+
+            // 鼠标按下开始旋转
+            cube.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                startRotateX = cube.style.transform ? 
+                    parseFloat(cube.style.transform.match(/rotateX\((-?\d+\.?\d*)deg\)/)[1]) : 0;
+                startRotateY = cube.style.transform ? 
+                    parseFloat(cube.style.transform.match(/rotateY\((-?\d+\.?\d*)deg\)/)[1]) : 0;
+            });
+
+            // 鼠标移动时旋转
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                
+                const rotateX = startRotateX - deltaY * 0.5;
+                const rotateY = startRotateY + deltaX * 0.5;
+                
+                cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            // 鼠标释放结束旋转
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+
+            // 触摸设备支持
+            cube.addEventListener('touchstart', function(e) {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                startRotateX = cube.style.transform ? 
+                    parseFloat(cube.style.transform.match(/rotateX\((-?\d+\.?\d*)deg\)/)[1]) : 0;
+                startRotateY = cube.style.transform ? 
+                    parseFloat(cube.style.transform.match(/rotateY\((-?\d+\.?\d*)deg\)/)[1]) : 0;
+            });
+
+            document.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                
+                const deltaX = e.touches[0].clientX - startX;
+                const deltaY = e.touches[0].clientY - startY;
+                
+                const rotateX = startRotateX - deltaY * 0.5;
+                const rotateY = startRotateY + deltaX * 0.5;
+                
+                cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            document.addEventListener('touchend', function() {
+                isDragging = false;
+            });
+
+            // 添加自动旋转
+            let autoRotateInterval;
+            let isAutoRotating = false;
+
+            function startAutoRotate() {
+                if (isAutoRotating) return;
+                
+                isAutoRotating = true;
+                let rotateY = 0;
+                
+                autoRotateInterval = setInterval(() => {
+                    rotateY += 1;
+                    const currentTransform = cube.style.transform;
+                    let currentRotateX = 0;
+                    
+                    if (currentTransform) {
+                        const rotateXMatch = currentTransform.match(/rotateX\((-?\d+\.?\d*)deg\)/);
+                        if (rotateXMatch) {
+                            currentRotateX = parseFloat(rotateXMatch[1]);
+                        }
+                    }
+                    
+                    cube.style.transform = `rotateX(${currentRotateX}deg) rotateY(${rotateY}deg)`;
+                }, 30);
             }
 
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slideCount;
+            function stopAutoRotate() {
+                clearInterval(autoRotateInterval);
+                isAutoRotating = false;
+            }
+
+            // 鼠标离开时开始自动旋转，鼠标移入时停止
+            cube.addEventListener('mouseleave', startAutoRotate);
+            cube.addEventListener('mouseenter', stopAutoRotate);
+
+            // 初始启动自动旋转
+            startAutoRotate();
+        });
+
+
+
+
+
+   
+   let angle = 0;
+const totalSlides = 8; // 图片数量
+
+function rotateCarousel(direction) {
+    angle += (360 / totalSlides) * direction;
+    document.querySelector('.carousel-inner').style.transform = `rotateY(${angle}deg)`;
+}
+
+// 自动旋转
+setInterval(() => rotateCarousel(1), 5000);
+
+   
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevButton = document.querySelector('.slider-button.prev');
+        const nextButton = document.querySelector('.slider-button.next');
+        let currentSlide = 0;
+        const slideCount = slides.length;
+
+        // 自动轮播间隔（毫秒）
+        const autoSlideInterval = 5000;
+        let autoSlideTimer;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            showSlide(currentSlide);
+        }
+
+        prevButton.addEventListener('click', () => {
+            prevSlide();
+            resetAutoSlide();
+        });
+
+        nextButton.addEventListener('click', () => {
+            nextSlide();
+            resetAutoSlide();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
                 showSlide(currentSlide);
-            }
-
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-                showSlide(currentSlide);
-            }
-
-            prevButton.addEventListener('click', () => {
-                prevSlide();
                 resetAutoSlide();
             });
+        });
 
-            nextButton.addEventListener('click', () => {
-                nextSlide();
-                resetAutoSlide();
-            });
+        function startAutoSlide() {
+            autoSlideTimer = setInterval(nextSlide, autoSlideInterval);
+        }
 
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    currentSlide = index;
-                    showSlide(currentSlide);
-                    resetAutoSlide();
-                });
-            });
+        function resetAutoSlide() {
+            clearInterval(autoSlideTimer);
+            startAutoSlide();
+        }
 
-            function startAutoSlide() {
-                autoSlideTimer = setInterval(nextSlide, autoSlideInterval);
-            }
+        const slider = document.querySelector('.hero-slider');
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideTimer);
+        });
 
-            function resetAutoSlide() {
-                clearInterval(autoSlideTimer);
-                startAutoSlide();
-            }
-
-            const slider = document.querySelector('.hero-slider');
-            slider.addEventListener('mouseenter', () => {
-                clearInterval(autoSlideTimer);
-            });
-
-            slider.addEventListener('mouseleave', () => {
-                startAutoSlide();
-            });
-
+        slider.addEventListener('mouseleave', () => {
             startAutoSlide();
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
+        startAutoSlide();
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
@@ -567,7 +1353,6 @@
         hamburger.classList.toggle('is-active');
     });
 });
-
-    </script>
+</script>
 </body>
 </html>
