@@ -8,7 +8,103 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        
+
+
+
+
+       .cyberworlds-statement {
+    margin: 3rem 0;
+    padding: 0 1rem;
+}
+
+.cyberworlds-border {
+    position: relative;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cyberworlds-border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+}
+
+.cyberworlds-border::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(0, 210, 255, 0.1) 0%, transparent 70%);
+    z-index: -1;
+}
+
+.cyberworlds-content {
+    position: relative;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    border-left: 4px solid #00d2ff;
+}
+
+.cyberworlds-content p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #333;
+    margin: 0;
+    text-align: justify;
+    position: relative;
+}
+
+.cyberworlds-content::before {
+    content: """;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 3em;
+    color: rgba(0, 210, 255, 0.2);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.cyberworlds-content::after {
+    content: """;
+    position: absolute;
+    bottom: -30px;
+    right: -10px;
+    font-size: 3em;
+    color: rgba(58, 123, 213, 0.2);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .cyberworlds-border {
+        padding: 1.5rem;
+    }
+    
+    .cyberworlds-content {
+        padding: 1rem;
+    }
+    
+    .cyberworlds-content p {
+        font-size: 1em;
+    }
+}
+
+
+       
         /* 基础样式 */
         * {
             margin: 0;
@@ -959,8 +1055,13 @@ h1, h2, h3, h4, h5, h6 {
 <!-- 插入的文字内容 -->
 <!-- 替换原有的文字部分 -->
 <section class="cyberworlds-intro">
-    <div class="container">
-        <p class="lead-text">Cyberworlds are information spaces and communities that immensely augment the way we interact, participate in business and receive information throughout the world. Cyberworlds seriously impact our lives and the evolution of the world economy by taking such forms as social networking services, 3D shared virtual communities and massively multiplayer online role-playing games.</p>
+  <div class="cyberworlds-statement">
+    <div class="cyberworlds-border">
+        <div class="cyberworlds-content">
+            <p>Cyberworlds are information spaces and communities that immensely augment the way we interact, participate in business and receive information throughout the world. Cyberworlds seriously impact our lives and the evolution of the world economy by taking such forms as social networking services, 3D shared virtual communities and massively multiplayer online role-playing games.</p>
+        </div>
+    </div>
+</div>
         
         <div class="conference-info">
             <h1 class="holographic-title">Welcome to the 24th International Conference on Cyberworlds (CW 2025)</h1>
