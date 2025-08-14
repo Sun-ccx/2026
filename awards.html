@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awards - Cyberworlds 2025</title>
+    <title>Registration - Cyberworlds 2025</title>
     <style>
         /* 基础样式 */
         * {
@@ -64,7 +64,10 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.6rem;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 0 1rem;
         }
 
         .nav-links a {
@@ -72,129 +75,251 @@
             color: #333;
             font-weight: 500;
             transition: color 0.3s;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
             color: #007bff;
         }
 
-        /* 奖项样式 */
-        .awards-section {
-            margin-top: 100px;
-            padding: 2rem 0;
-            text-align: center; /* 添加居中样式 */
+        /* 注册页面样式 */
+        .registration-section {
+            margin: 100px auto 0;
+            padding: 2rem 1rem;
+            max-width: 1200px;
         }
 
-        .awards-header h1 {
-            font-size: 2.5em;
+        .registration-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .registration-header h1 {
+            font-size: 2.5rem;
             color: #333;
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-        .award {
-            margin-bottom: 2rem;
-            padding: 1rem 2rem;
-            border: 1px solid #eee;
-            border-radius: 5px;
-            display: inline-block; /* 使奖项块在容器中居中 */
-            width: 80%; /* 限制宽度，使其在大屏幕上不会过宽 */
+        .registration-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .award-title {
-            font-size: 1.5em;
+        .registration-header a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .registration-header a:hover {
+            text-decoration: underline;
+        }
+
+        /* Table Styles */
+        .registration-fee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .registration-fee-table caption {
+            text-align: left;
+            font-size: 1.5rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .award-recipients {
-            font-size: 1em;
+            margin-bottom: 1rem;
             color: #333;
         }
 
-      /* 汉堡菜单样式 */
-.hamburger {
-    display: none; /* 默认隐藏 */
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 10px;
-    z-index: 1001;
-}
+        .registration-fee-table th,
+        .registration-fee-table td {
+            border: 1px solid #e0e0e0;
+            padding: 1rem;
+            text-align: center;
+        }
 
-.hamburger-box {
-    width: 24px;
-    height: 24px;
-    display: inline-block;
-    position: relative;
-}
+        .registration-fee-table th {
+            background-color: #f5f7fa;
+            font-weight: 600;
+            color: #444;
+        }
 
-.hamburger-inner {
-    width: 100%;
-    height: 2px;
-    background-color: #333;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: background-color 0.3s;
-}
+        .registration-fee-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-.hamburger-inner::before,
-.hamburger-inner::after {
-    content: '';
-    width: 100%;
-    height: 2px;
-    background-color: #333;
-    position: absolute;
-    left: 0;
-    transition: transform 0.3s;
-}
+        .registration-fee-table tr:hover {
+            background-color: #f1f5f9;
+        }
 
-.hamburger-inner::before {
-    top: -6px;
-}
+        /* PayPal 按钮样式 */
+        .paypal-button {
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
 
-.hamburger-inner::after {
-    top: 6px;
-}
+        .paypal-button:hover {
+            transform: scale(1.05);
+        }
 
-/* 移动端样式 */
-@media (max-width: 768px) {
-    .hamburger {
-        display: block; /* 显示汉堡菜单 */
-    }
+        .paypal-button img {
+            height: 40px;
+            width: auto;
+        }
 
-    .nav-links {
-        display: none; /* 默认隐藏导航链接 */
-        position: absolute;
-        top: 60px; /* 导航栏高度 */
-        left: 0;
-        width: 100%;
-        background: #fff;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-    }
+        /* Note Section */
+        .note-section {
+            background-color: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #3b82f6;
+        }
 
-    .nav-links ul {
-        flex-direction: column;
-        padding: 1rem;
-    }
+        .note-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
 
-    .nav-links ul li {
-        margin: 0.5rem 0;
-    }
+        .note-section ul {
+            padding-left: 1.5rem;
+            margin: 0;
+        }
 
-    .nav-links.active {
-        display: block; /* 显示导航链接 */
-    }
+        .note-section li {
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
 
-    .hero-slider {
-        margin-top: 60px; /* 调整轮播图的顶部间距 */
-    }
-}
+        /* Receipt Section */
+        .receipt-section {
+            background-color: #f0fdf4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #10b981;
+        }
 
+        .receipt-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
 
-        
+        .receipt-section p {
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .receipt-section a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .receipt-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* 汉堡菜单样式 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .hamburger-box {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .hamburger-inner {
+            width: 100%;
+            height: 2px;
+            background-color: #333;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: background-color 0.3s;
+        }
+
+        .hamburger-inner::before,
+        .hamburger-inner::after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background-color: #333;
+            position: absolute;
+            left: 0;
+            transition: transform 0.3s;
+        }
+
+        .hamburger-inner::before {
+            top: -6px;
+        }
+
+        .hamburger-inner::after {
+            top: 6px;
+        }
+
+        /* 移动端样式 */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            .nav-links ul {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links ul li {
+                margin: 0.5rem 0;
+            }
+
+            .nav-links.active {
+                display: block;
+            }
+
+            .hero-slider {
+                margin-top: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .registration-fee-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .paypal-button img {
+                height: 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -214,56 +339,134 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="flyer.html">Flyer</a></li>
-                <li><a href="program.html">Conference Program</a></li>
-                <li><a href="Papers.html">Call for papers</a></li>
+                <li><a href="Papers.html">Call for Papers</a></li>
+                <li><a href="program.html">Program</a></li>
                 <li><a href="awards.html">Awards</a></li>
                 <li><a href="speakers.html">Keynote Speakers</a></li>
                 <li><a href="committee.html">Committee</a></li>
+                <li><a href="registration.html">Registration</a></li>
                 <li><a href="venue.html">For Attendees</a></li>
+                <li><a href="events.html">Social Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 </header>
-    <main>
-        <section class="awards-section">
-            <h1>Awards</h1>
-            <div class="award">
-                <h2 class="award-title">BEST PAPER AWARD</h2>
-                <p class="award-recipients">
-                    Pending update<br>
-                    Pending update
-                </p>
-            </div>
-            <div class="award">
-                <h2 class="award-title">BEST STUDENT PRESENTATION AWARD</h2>
-                <p class="award-recipients">
-                   Pending update<br>
-                   Pending update
-                </p>
-            </div>
-            <div class="award">
-                <h2 class="award-title">BEST POSTER AWARD</h2>
-                <p class="award-recipients">
-                    Pending update<br>
-                   Pending update
-                </p>
-            </div>
-        </section>
-    </main>
 
+<main>
+    <section class="registration-section">
+        <div class="container">
+            <div class="registration-header">
+                <h1>Registration</h1>
+                <p>The online registration: <a href="#">Cyberworlds 2025 Online Registration</a></p>
+            </div>
+
+            <table class="registration-fee-table">
+                <caption>REGISTRATION FEE:</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Category</th>
+                        <th scope="col">Fee</th>
+                        <th scope="col">PayPal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Full Registration</td>
+                        <td>3800 RMB (520$)</td>
+                        <td>
+                            <a href="https://www.paypal.com/checkout" class="paypal-button" target="_blank" rel="noopener">
+                                <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal" />
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 扩展表格示例（基于图片中的内容） -->
+            <table class="registration-fee-table" style="margin-top: 3rem;">
+                <caption>FOR POSTER PAPER:</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Items</th>
+                        <th scope="col">Fees</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">PayPal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Regular registration</td>
+                        <td>US$500</td>
+                        <td>This regular registration fee includes all technical sessions, one bag, final program, lunch, conference banquet and refreshment breaks.</td>
+                        <td>
+                            <a href="https://www.paypal.com/checkout?amount=500" class="paypal-button" target="_blank" rel="noopener">
+                                <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal" />
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>One Extra page fee</td>
+                        <td>US$200</td>
+                        <td>Each extra page if more than given page numbers</td>
+                        <td>
+                            <a href="https://www.paypal.com/checkout?amount=200" class="paypal-button" target="_blank" rel="noopener">
+                                <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal" />
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>One Accompany Fee</td>
+                        <td>US$350</td>
+                        <td>Other student or colleague or family member</td>
+                        <td>
+                            <a href="https://www.paypal.com/checkout?amount=350" class="paypal-button" target="_blank" rel="noopener">
+                                <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal" />
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note-section">
+                <h3>Note</h3>
+                <ul>
+                    <li>One Full Registration can only cover one accepted paper, regardless of the paper type.</li>
+                    <li>One accepted full/short paper requires at least one Full Registration.</li>
+                    <li>One accepted poster paper requires at least one Full/Student Registration.</li>
+                    <li>For the same author, the first paper requires full registration, the second registered paper is eligible for a 20% discount, and the third receives a 30% discount.</li>
+                    <li>If you are using PayPal to pay the fee, the 95.0 LIQD of 505.0 LIQD in the PayPal handling fee will be paid by PayPal.</li>
+                </ul>
+            </div>
+
+            <div class="receipt-section">
+                <h3>Note</h3>
+                <p>These are tentative fees based on the expected number of submissions. The final fees will be published when the conference program is formed.</p>
+            </div>
+        </div>
+    </section>
+</main>
 
 <script>
- document.addEventListener('DOMContentLoaded', function () {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+    document.addEventListener('DOMContentLoaded', function () {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
 
-    hamburger.addEventListener('click', function () {
-        // 切换导航栏的显示状态
-        navLinks.classList.toggle('active');
-        // 切换汉堡菜单的动画
-        hamburger.classList.toggle('is-active');
+        hamburger.addEventListener('click', function () {
+            // 切换导航栏的显示状态
+            navLinks.classList.toggle('active');
+            // 切换汉堡菜单的动画
+            hamburger.classList.toggle('is-active');
+        });
+
+        // PayPal 按钮点击事件处理
+        document.querySelectorAll('.paypal-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // 这里可以添加更多的PayPal集成逻辑
+                console.log('PayPal payment initiated');
+            });
+        });
     });
-});
 </script>
 </body>
 </html>
