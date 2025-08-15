@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flyer - CyberWorlds 2025</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            padding-top: 100px; /* 给导航栏留出空间 */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏样式 - 重新设计 */
+        .main-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+        }
+
+        .navbar {
+            padding: 1.2rem 0;
+            position: relative;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.4em;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            height: 45px;
+            margin-right: 12px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .logo-text {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            display: block;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-size: 0.95em;
+            padding: 0.8rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 添加导航项的进入动画 */
+        .nav-links li {
+            opacity: 0;
+            animation: navItemSlideIn 0.6s ease forwards;
+        }
+
+        .nav-links li:nth-child(1) { animation-delay: 0.1s; }
+        .nav-links li:nth-child(2) { animation-delay: 0.2s; }
+        .nav-links li:nth-child(3) { animation-delay: 0.3s; }
+        .nav-links li:nth-child(4) { animation-delay: 0.4s; }
+        .nav-links li:nth-child(5) { animation-delay: 0.5s; }
+        .nav-links li:nth-child(6) { animation-delay: 0.6s; }
+        .nav-links li:nth-child(7) { animation-delay: 0.7s; }
+        .nav-links li:nth-child(8) { animation-delay: 0.8s; }
+        .nav-links li:nth-child(9) { animation-delay: 0.9s; }
+        .nav-links li:nth-child(10) { animation-delay: 1.0s; }
+        .nav-links li:nth-child(11) { animation-delay: 1.1s; }
+
+        @keyframes navItemSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 滚动时导航栏变化效果 */
+        .main-header.scrolled {
+            background: rgba(102, 126, 234, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 0.5rem 0;
+        }
+
+        .main-header.scrolled .navbar {
+            padding: 0.8rem 0;
+        }
+
+        /* 汉堡菜单样式改进 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hamburger-box {
+            width: 24px;
+            height: 18px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .hamburger-inner {
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
+        }
+
+        .hamburger-inner::before,
+        .hamburger-inner::after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            position: absolute;
+            left: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
+        }
+
+        .hamburger-inner::before {
+            top: -6px;
+        }
+
+        .hamburger-inner::after {
+            top: 6px;
+        }
+
+        /* 汉堡菜单激活状态 */
+        .hamburger.is-active .hamburger-inner {
+            background-color: transparent;
+        }
+
+        .hamburger.is-active .hamburger-inner::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .hamburger.is-active .hamburger-inner::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+        /* 移动端样式 */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                backdrop-filter: blur(20px);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                border-radius: 0;
+                padding: 1rem;
+                border: none;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-links li {
+                animation: none;
+                opacity: 1;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                border-radius: 8px;
+                text-align: center;
+                font-size: 1.1em;
+            }
+
+            .nav-links.active {
+                display: flex;
+                animation: slideDown 0.3s ease;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .logo {
+                font-size: 1.2em;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+        }
+
+        /* 更小屏幕优化 */
+        @media (max-width: 480px) {
+            .navbar .container {
+                padding: 0 15px;
+            }
+            
+            .main-header {
+                padding: 0 10px;
+            }
+        }
+
+        /* 主要内容样式 */
+        .flyer-section {
+            padding: 40px 0;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .flyer-title {
+            text-align: center; 
+            font-size: 2.5em; 
+            color: #333; 
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .flyer-image {
+            text-align: center;
+        }
+
+        .flyer-image img {
+            max-width: 100%; 
+            height: auto; 
+            border: 2px solid #eee; 
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .flyer-image img:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <div style="width: 45px; height: 45px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+                        <span style="color: #667eea; font-weight: bold; font-size: 1.2em;">CW</span>
+                    </div>
+                    <span class="logo-text">CyberWorlds 2025</span>
+                </a>
+                <!-- 汉堡菜单按钮 -->
+                <button class="hamburger" aria-label="Toggle navigation">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+                <!-- 导航链接 -->
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Flyer</a></li>
+                    <li><a href="#">Call for Papers</a></li>
+                    <li><a href="#">Program</a></li>
+                    <li><a href="#">Awards</a></li>
+                    <li><a href="#">Keynote Speakers</a></li>
+                    <li><a href="#">Committee</a></li>
+                    <li><a href="#">Registration</a></li>
+                    <li><a href="#">For Attendees</a></li>
+                    <li><a href="#">Social Events</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="flyer-section">
+            <div class="container">
+                <h1 class="flyer-title">Conference Flyer</h1>
+                <div class="flyer-image">
+                    <div style="width: 600px; height: 800px; background: linear-gradient(45deg, #f0f2f5, #e1e5e9); border: 2px solid #eee; border-radius: 10px; margin: 0 auto; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                        <span style="color: #666; font-size: 1.2em;">Flyer Image Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 添加一些内容来测试滚动效果 -->
+        <section style="height: 1000px; background: #fff; padding: 50px 0;">
+            <div class="container">
+                <h2 style="text-align: center; color: #333;">Scroll down to see the navigation bar effect</h2>
+                <p style="text-align: center; margin-top: 20px; color: #666;">The navigation bar will change appearance when you scroll.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', function () {
+                // 切换导航栏的显示状态
+                navLinks.classList.toggle('active');
+                // 切换汉堡菜单的动画
+                hamburger.classList.toggle('is-active');
+            });
+        });
+
+        // 添加滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.main-header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
